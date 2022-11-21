@@ -1,0 +1,329 @@
+{
+	"info": {
+		"_postman_id": "4fed27d4-e25a-4aca-87e9-d6a6c47ae48f",
+		"name": "Lesson 18",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24341243"
+	},
+	"item": [
+		{
+			"name": "User1",
+			"item": [
+				{
+					"name": "CREATE user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"gender\");\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"last name\");\r",
+									"});\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\" : \"Natalia\" ,\r\n\"age\" : \"33\" ,\r\n\"gender\" : \"female\" ,\r\n\"city\" : \"Kyiv\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users",
+							"protocol": "https",
+							"host": [
+								"em",
+								"staging",
+								"api",
+								"onereach",
+								"ai"
+							],
+							"path": [
+								"http",
+								"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Natan\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Nataliia\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id=a55cd8a9-4b8a-4847-886c-a8a725bc1213",
+							"protocol": "https",
+							"host": [
+								"em",
+								"staging",
+								"api",
+								"onereach",
+								"ai"
+							],
+							"path": [
+								"http",
+								"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "a55cd8a9-4b8a-4847-886c-a8a725bc1213"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Lviv\");\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Lvyv\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\" : \"a55cd8a9-4b8a-4847-886c-a8a725bc1213\" ,\r\n\"name\" : \"Natan\" ,\r\n\"age\" : \"30\" ,\r\n\"gender\" : \"male\" ,\r\n\"city\" : \"Lviv\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users",
+							"protocol": "https",
+							"host": [
+								"em",
+								"staging",
+								"api",
+								"onereach",
+								"ai"
+							],
+							"path": [
+								"http",
+								"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User2",
+			"item": [
+				{
+					"name": "GREATE user2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\" : \"Oleksandr\" ,\r\n\"age\" : \"28\" ,\r\n\"gender\" : \"male\" ,\r\n\"city\" : \"Harkiv\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users",
+							"protocol": "https",
+							"host": [
+								"em",
+								"staging",
+								"api",
+								"onereach",
+								"ai"
+							],
+							"path": [
+								"http",
+								"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET user2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id=d8a623d5-b20c-44a5-9664-7b5963c8b490",
+							"protocol": "https",
+							"host": [
+								"em",
+								"staging",
+								"api",
+								"onereach",
+								"ai"
+							],
+							"path": [
+								"http",
+								"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "d8a623d5-b20c-44a5-9664-7b5963c8b490"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT user2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\" : \"d8a623d5-b20c-44a5-9664-7b5963c8b490\" ,\r\n\"name\" : \"Oleksiyi\" ,\r\n\"age\" : \"28\" ,\r\n\"gender\" : \"male\" ,\r\n\"city\" : \"Harkiv\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users",
+							"protocol": "https",
+							"host": [
+								"em",
+								"staging",
+								"api",
+								"onereach",
+								"ai"
+							],
+							"path": [
+								"http",
+								"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE user2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id=d8a623d5-b20c-44a5-9664-7b5963c8b490",
+							"protocol": "https",
+							"host": [
+								"em",
+								"staging",
+								"api",
+								"onereach",
+								"ai"
+							],
+							"path": [
+								"http",
+								"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "d8a623d5-b20c-44a5-9664-7b5963c8b490"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
